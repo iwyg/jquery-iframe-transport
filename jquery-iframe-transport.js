@@ -71,16 +71,16 @@
 // pretty simple overall, so you should be able to fix it and contribute a
 // patch :)
 // ## Annotated Source
-(function (window, transport) {
+(function (window, define, transport) {
 	// if requireJS is available, load plugin as async module
-	if (typeof window.define === 'function' && window.define.amd) {
-		window.define(['jquery'], transport);
+	if (typeof define === 'function' && define.amd) {
+		define(['jquery'], transport);
 	} else {
 		transport(window.jQuery);
 	}
 }
 
-(this, function ($, undefined) {
+(this, this.define, function ($, undefined) {
 	'use strict';
 
 	// Register a prefilter that checks whether the `iframe` option is set, and
